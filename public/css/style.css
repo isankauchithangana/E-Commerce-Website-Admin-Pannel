@@ -1,0 +1,1027 @@
+/* =========== Google Fonts ============ */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+/* =============== Globals ============== */
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #050658;
+  --white: #fff;
+  --gray: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
+  --green: #048d16;
+  --red: #d30505;
+  --green2: #005326;
+  --red2: #630303;
+  --blue2: #046ef8;
+  --blue3: #b8f3df;
+  --black3: #6b6a6a;
+
+  
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+/* =============== Navigation ================ */
+.navigation {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: var(--blue);
+  border-left: 10px solid var(--blue);
+  transition: 0.5s;
+  overflow: hidden;
+}
+.navigation.active {
+  width: 80px;
+}
+
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background-color: var(--white);
+}
+
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: var(--white);
+}
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--blue);
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
+}
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+/* --------- curve outside ---------- */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
+}
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+/* ===================== Main ===================== */
+.main {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: var(--white);
+  transition: 0.5s;
+}
+.main.active {
+  width: calc(100% - 80px);
+  left: 80px;
+}
+
+.topbar {
+  background-color: var(--gray);
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+
+.search label {
+  position: relative;
+  width: 100%;
+}
+
+.search label input {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  font-size: 18px;
+  outline: none;
+  border: 1px solid var(--black2);
+}
+
+.search label ion-icon {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 1.2rem;
+}
+
+.userNme{
+  position: relative;
+}
+
+.userNme .name{
+  color: var(--blue);
+  font-weight: 500;
+}
+
+.userNme .role{
+  color: var(--black2);
+}
+
+.user {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.user img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ======================= Cards ====================== */
+.cardBox {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+}
+
+.cardBox a{
+  text-decoration: none;
+}
+
+.cardBox .card,
+.tatalProductCard, 
+.addNewUserCard {
+  position: relative;
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardBox .card{
+  background: var(--white);
+}
+.cardBox .tatalProductCard,
+.cardBox .addNewUserCard{
+  background: var(--blue3);
+}
+
+.cardBox .card .numbers,
+.cardBox .tatalProductCard .numbers {
+  position: relative;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: var(--blue);
+}
+
+.cardBox .card .cardName,
+.cardBox .tatalProductCard .cardName,
+.cardBox .addNewUserCard .cardName{
+  color: var(--black2);
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.cardBox .card .iconBx,
+.cardBox .tatalProductCard .iconBx,
+.cardBox .addNewUserCard .iconBx{
+  font-size: 2.5rem;
+  color: var(--black2);
+  margin-left: 10px;
+}
+
+.cardBox .card:hover,
+.cardBox .tatalProductCard:hover,
+.cardBox .addNewUserCard:hover{
+  background: var(--blue);
+}
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBx,
+.cardBox .tatalProductCard:hover .numbers,
+.cardBox .tatalProductCard:hover .cardName,
+.cardBox .tatalProductCard:hover .iconBx,
+.cardBox .addNewUserCard:hover .numbers,
+.cardBox .addNewUserCard:hover .cardName,
+.cardBox .addNewUserCard:hover .iconBx  {
+  color: var(--white);
+}
+
+/* ================== Order Details List ============== */
+.details {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+  /* margin-top: 10px; */
+}
+
+.details .recentOrders {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.details .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.cardHeader h2 {
+  font-weight: 600;
+  color: var(--blue);
+}
+.cardHeader .btn {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
+
+.cardHeader .btn3 {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  border-radius: 50%;
+  padding: 10px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  font-size: 40px;
+  font-weight: 100px;
+}
+
+.cardHeader .btn3:hover{
+  background: var(--blue2);
+}
+
+.details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.details table thead td {
+  background: var(--blue);
+  color: var(--white);
+  font-weight: 600;
+}
+.details .recentOrders table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.details .recentOrders table tr:last-child {
+  border-bottom: none;
+}
+.details .recentOrders table tbody tr:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+.details .recentOrders table tr td {
+  padding: 10px;
+}
+.details .recentOrders table tr td:last-child {
+  text-align: end;
+}
+.details .recentOrders table tr td:nth-child(2) {
+  text-align: end;
+}
+.details .recentOrders table tr td:nth-child(3) {
+  text-align: center;
+}
+.status {
+  display: inline-block;
+  padding: 2px 4px;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100px; 
+  text-align: center;
+}
+
+.status.delivered {
+  background: #8de02c;
+}
+
+.status.pending {
+  background: #e9b10a;
+}
+
+.status.return {
+  background: #f00;
+}
+
+.status.inProgress {
+  background: #1795ce;
+}
+
+.recentCustomers,
+.viewUsers,
+.viewProducts {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  padding: 20px;
+  background: var(--white);
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+.recentCustomers .imgBx,
+.viewUsers .imgBx {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.viewProducts .productimgBx{
+  position: relative;
+  width: 40px;
+  height: 40px;
+  /* border-radius: 50px; */
+  overflow: hidden;
+}
+
+.recentCustomers .imgBx img,
+.viewUsers .imgBx img,
+.viewProducts .productimgBx img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recentCustomers table tr td,
+.viewUsers table tr td,
+.viewProducts table tr td {
+  padding: 12px 10px;
+}
+.recentCustomers table tr td h4,
+.viewUsers table tr td h4,
+.viewProducts table tr td h4 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2rem;
+}
+.recentCustomers table tr td h4 span {
+  font-size: 14px;
+  color: var(--black2);
+}
+.recentCustomers table tr:hover,
+.viewUsers table tr:hover,
+.viewProducts table tr:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+.recentCustomers table tr:hover td h4 span {
+  color: var(--white);
+}
+
+/* =========================view users buttons edit and delete ================ */
+
+.viewUsers .btn1, .btn2, .btn4,
+.viewProducts .btn1, .btn2, .btn4{
+  padding: 6px 6px;
+  text-decoration: none;
+  border-radius: 5px;
+  color: var(--white);
+}
+
+.viewUsers .btn1,
+.viewProducts .btn1{
+  background-color: var(--green);
+}
+
+.viewUsers .btn2,
+.viewProducts .btn2{
+  background-color: var(--red);
+}
+
+.viewUsers .btn1,
+.viewProducts .btn1{
+  background-color: var(--green);
+}
+
+.viewUsers .btn4,
+.viewProducts .btn4{
+  background-color: var(--blue2);
+}
+
+
+
+
+/* ====================== Responsive Design ========================== */
+@media (max-width: 991px) {
+  .navigation {
+    left: -300px;
+  }
+  .navigation.active {
+    width: 300px;
+    left: 0;
+  }
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    left: 300px;
+  }
+  .cardBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .details {
+    grid-template-columns: 1fr;
+  }
+  .recentOrders {
+    overflow-x: auto;
+  }
+  .status.inProgress {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardBox {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cardHeader h2 {
+    font-size: 20px;
+  }
+  .user {
+    min-width: 40px;
+  }
+  .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navigation.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle {
+    z-index: 10001;
+  }
+  .main.active .toggle {
+    color: #fff;
+    position: fixed;
+    right: 0;
+    left: initial;
+  }
+}
+
+
+
+/* =========================User registration form=============== */
+.reg-form {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-gap: 30px;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  height: auto;
+  width: 100%;
+
+}
+
+.reg-form, .login-form .recentOrders {
+  position: relative;
+  display: grid;
+  width: 700px;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.reg-form, .login-form .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.cardHeader h2 {
+  font-weight: 600;
+  color: var(--blue);
+}
+.cardHeader .btn {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+}
+
+label{
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--blue);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"]
+{
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    color: var(--black3);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+
+.custom-select {
+    color: var(--black3);
+    font-weight: 500;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    appearance: none; 
+    background: #fff url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px center;
+    background-size: 16px 16px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.custom-select-wrapper {
+    position: relative;
+}
+
+.custom-select {
+    width: 100%;
+    cursor: pointer;
+}
+
+input[type="submit"]{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: var(--blue);
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 500;
+    border: 0px solid var(--blue);
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover{
+  background-color: var(--black2);
+  color: var(--black1);
+}
+
+input[type="date"]{
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  color: var(--black3);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* =========================add new products============================ */
+
+.categoryRightSide{
+  margin-top: 45px;
+}
+
+.selectCategory{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: var(--blue);
+  display: flex;
+  justify-content: center;
+}
+
+.categorySelector{
+  margin-top: 10px;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
+  width: 100%;
+  min-height: 40px;
+  background: var(--white);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.categoryRightSide input[type="text"]{
+  width: 100%;
+}
+
+.categoryBtn {
+  background-color: var(--blue);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.categoryBtn:hover{
+  background-color: var(--black2);
+  color: var(--black1);
+}
+
+.categoryBtn.selected {
+  background-color: var(--red);
+  color: white;
+}
+input[type="radio"] {
+  display: none;
+}
+
+/* .categoryBtn{
+  background-color: var(--blue);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.categoryBtn:hover{
+  background-color: var(--black2);
+  color: var(--black1);
+} */
+
+.ProductImgContainer{
+  margin-top: 10px;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 5px;
+  width: 100%;
+  min-height: 40px;
+  background: var(--white);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.ProductImgContainer button,
+.selectedImg button{
+  background-color: var(--blue);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.ProductImgContainer button:hover,
+.selectedImg button:hover{
+  background-color: var(--black2);
+  color: var(--black1);
+}
+
+.error{
+  position: relative;
+  margin-top: 5px;
+  text-align: center;
+  color: var(--red2);
+  background-color: #ff9696;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.success{
+    position: relative;
+    margin-top: 5px;
+    text-align: center;
+    color: var(--green2);
+    background-color: #7be98a;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+thead{
+  font-weight: 600;
+  background: var(--blue);
+  color: var(--white);
+}
+
+.img_upload{
+  width: 100%;
+  cursor: pointer;
+}
+
+
+.imgGallery {
+  margin-top: 15px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 15px;
+  width: 100%;
+  min-height: 40px;
+  background: var(--white);
+}
+
+.gallery {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.gallery:hover{
+  border: 2px solid var(--blue);
+  border-radius: 5px;
+}
+
+.gallery img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  padding: 10px;
+}
+
+/* ============image gallery right side================= */
+
+
+.selecteImgCover {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  height: 200px;
+  width: 200px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.ProductImgContainer .selecteImgCover {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  height: 200px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.ProductImgContainer .selecteImgCover:hover{
+  border: none;
+}
+
+.selecteImgCover:hover{
+  border: 2px solid var(--blue);
+  border-radius: 5px;
+}
+
+.selecteImgCover:hover{
+  border: 2px solid var(--blue);
+  border-radius: 5px;
+}
+
+.selecteImgCover img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  padding: 10px;
+}
+
+/* ==================================image gallery drag============================ */
+
+.new_img_import{
+  margin: 20px;
+  padding: 20px;
+  background-color: var(--white);
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.drag-area {
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+.drag-area.hover {
+  border-color: #333;
+}
+.new-images {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.new-images img {
+  max-width: 150px;
+  height: auto;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.drag-area button{
+  margin-top: 10px;
+  background-color: var(--blue);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.drag-area button:hover{
+  background-color: var(--black3);
+  color: var(--white);
+}
+
+.upload_img{
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+}
+
+
+/* =================dubmit btn======================= */
+
+.submit-button {
+  display: none;
+}
+
+.successMsg{
+  margin-bottom: 10px;
+}
+
+/* =============================viwproduct page ============================ */
+
+.data-container{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  background-color: var(--white);
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+.data-container p{
+  margin-left: 15px;
+}
